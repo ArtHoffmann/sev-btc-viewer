@@ -23,6 +23,7 @@ import {CovalentTooltipEchartsModule} from "@covalent/echarts/tooltip";
 import { NumberSuffixPipe } from './number-suffix.pipe';
 import {CovalentLineEchartsModule} from "@covalent/echarts/line";
 import 'echarts/lib/chart/line';
+import { BtcDetailsComponent } from './btc-details/btc-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import 'echarts/lib/chart/line';
     BtcConverterComponent,
     BtcDiagrammComponent,
     MyCoinsComponent,
-    NumberSuffixPipe
+    NumberSuffixPipe,
+    BtcDetailsComponent
   ],
   imports: [
     BrowserModule,

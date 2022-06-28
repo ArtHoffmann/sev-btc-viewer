@@ -6,30 +6,136 @@
 
     <div fxLayout="row" fxLayoutAlign="space-between start" style="margin-left: 15px">
       <ng-container *ngFor="let w of waehrungen; let i = index">
-        <div *ngIf="i <= 5"
-             style="height: 150px; width: 300px; color: rgb(39, 39, 39); border-style: solid; margin-left: 5px; margin-right: 15px"
-             fxFlex="20">
-          <span>Symbol: {{w}} <br></span>
-          <span>Einkaufspreis: {{btc[w].buy}} <br></span>
-          <span>Verkaufspreis: {{btc[w].sell}}  <br></span>
-          <span>Letzter Preis: {{btc[w].last}}</span>
-        </div>
+        <mat-card *ngIf="i <= 5"
+                  style="height: 150px; width: 300px; color: rgb(39, 39, 39); margin-left: 5px; margin-right: 15px"
+                  fxFlex="20">
+          <div fxFlex="70">
+            <span>Symbol: {{w}} <br></span>
+            <br>
+            <span>Einkaufspreis: {{btc[w].buy}} {{w}}<br></span>
+            <span>Verkaufspreis: {{btc[w].sell}} {{w}}<br></span>
+            <span>Letzter Preis: {{btc[w].last}} {{w}}</span>
+          </div>
+
+          <div fxFlex="30">
+            <img style="margin-top:15px; width: 90px; height: 90px;" src="assets/btc.png" alt="btc">
+          </div>
+        </mat-card>
       </ng-container>
     </div>
 
-    <mat-form-field class="drop-down" appearance="fill" style="margin-left: 15px; margin-top: 20px">
-      <mat-label>--Währungen--</mat-label>
-      <mat-select name="waehrung" [(ngModel)]="values">
-        <mat-option *ngFor="let b of btc | keyvalue" [value]="b.value" (click)="filterWaehrung(b.key)">
-          {{ b.key}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div style="margin-left: 15px">
-      <div *ngIf="key !== undefined"><span> Ausgewählte Währung: {{key}} </span></div>
-      <div *ngIf="values !== undefined"><span> Einkaufspreis: {{values.buy}} </span></div>
-      <div *ngIf="values !== undefined"><span> Verkaufspreis: {{values.sell}} </span></div>
-    </div>
   </mat-card-content>
+  <div fxLayout="row">
+    <div fxFlex="30">
+      <div fxLayout="row" style="margin-top: 50px">
+        <mat-card
+          style="margin-left: 20px; width: 150px; height: 150px; background-image: linear-gradient(to right, #DAECFA, #006370);">
+          <h4 fxLayoutAlign="center center" style="margin-top: 10px">Bitcoin Price <br></h4>
+          <h2 fxLayoutAlign="center center" style="margin-top: 40px">{{btc['USD'].buy | json}} </h2>
+        </mat-card>
+
+        <mat-card *ngIf="volumeBTC | async as tbtc"
+                  style="margin-left: 20px; width: 150px; height: 150px; background-image: linear-gradient(to right, #DAECFA, #006370);">
+          <h4 fxLayoutAlign="center center" style="margin-top: 10px">Total BTC <br></h4>
+          <h2 fxLayoutAlign="center center" style="margin-top: 40px">{{tbtc | number}} </h2>
+        </mat-card>
+
+        <mat-card *ngIf="marketcap | async as mc"
+                  style="margin-left: 20px; width: 150px; height: 150px; background-image: linear-gradient(to right, #DAECFA, #006370);">
+          <h4 fxLayoutAlign="center center" style="margin-top: 10px">Market Cap <br></h4>
+          <h2 fxLayoutAlign="center center" style="margin-top: 40px">{{mc | numberSuffix}} </h2>
+        </mat-card>
+
+      </div>
+
+      <div fxLayout="row" style="margin-top: 50px">
+
+        <mat-card *ngIf="difficulty | async as diff"
+                  style="margin-left: 20px; width: 150px; height: 150px; background-image: linear-gradient(to right, #DAECFA, #006370);">
+          <h4 fxLayoutAlign="center center" style="margin-top: 10px">Difficulty <br></h4>
+          <h4 fxLayoutAlign="center center" style="margin-top: 40px">{{diff | number}} </h4>
+        </mat-card>
+
+        <mat-card *ngIf="csent | async as hash"
+                  style="margin-left: 20px; width: 150px; height: 150px; background-image: linear-gradient(to right, #DAECFA, #006370);">
+          <h4 fxLayoutAlign="center center" style="margin-top: 10px">Hashrate <br></h4>
+          <h4 fxLayoutAlign="center center" style="margin-top: 40px">{{hash | number}} </h4>
+        </mat-card>
+
+        <mat-card *ngIf="transactionCount | async as tc"
+                  style="margin-left: 20px; width: 150px; height: 150px; background-image: linear-gradient(to right, #DAECFA, #006370);">
+          <h4 fxLayoutAlign="center center" style="margin-top: 10px">Transaction Count<br></h4>
+          <h4 fxLayoutAlign="center center" style="margin-top: 40px">{{tc | number}} </h4>
+        </mat-card>
+
+      </div>
+
+    </div>
+
+    <div fxFlex="30">
+      <div *ngIf="circulatingBTC | async as btc" fxFlex="50" style="margin-left: 20px; margin-top: 40px">
+        <span>Total Circulating Bitcoin</span>
+        <br>
+        <span>The total number of mined bitcoin that are currently circulating on the network..</span>
+        <br>
+        <td-chart style="width: 600px; height: 400px">
+          <td-chart-x-axis [show]="true"
+                           [type]="'time'">
+          </td-chart-x-axis>
+          <td-chart-y-axis [show]="true"
+                           [type]="'value'">
+          </td-chart-y-axis>
+          <td-chart-series td-line
+                           [name]="'name'"
+                           [data]="btc"
+                           [color]="'#F2724B'">
+          </td-chart-series>
+        </td-chart>
+      </div>
+    </div>
+    <div fxFlex="30">
+      <div *ngIf="priceArray | async as price" fxFlex="50" style="margin-left: 80px; margin-top: 40px">
+        <span>Market Price (USD)</span>
+        <br>
+        <span>Average USD market price across major bitcoin exchanges.</span>
+        <br>
+        <td-chart style="width: 600px; height: 400px">
+          <td-chart-x-axis [show]="true"
+                           [type]="'time'">
+          </td-chart-x-axis>
+          <td-chart-y-axis [show]="true"
+                           [type]="'value'">
+          </td-chart-y-axis>
+          <td-chart-series td-line
+                           [name]="'name'"
+                           [data]="price"
+                           [color]="'#F2724B'">
+          </td-chart-series>
+        </td-chart>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="40">
+      <mat-card style="margin-left: 20px; background-image: linear-gradient(to right, #DAECFA, #afafaf);">
+        <mat-card-subtitle>Price in Währung</mat-card-subtitle>
+        <mat-form-field class="drop-down" appearance="fill">
+          <mat-label>--Währungen--</mat-label>
+          <mat-select name="waehrung" [(ngModel)]="values">
+            <mat-option *ngFor="let b of btc | keyvalue" [value]="b.value" (click)="filterWaehrung(b.key)">
+              {{ b.key}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+    </div>
+    <mat-card fxFlex="60" style="margin-left: 20px; background-image: linear-gradient(to right, #DAECFA, #afafaf)">
+      <div style="margin-top: 20px; "*ngIf="key !== undefined"><span> Ausgewählte Währung: {{key}} </span></div>
+      <div *ngIf="values !== undefined"><span> Einkaufspreis: {{values.buy}} {{key}}</span></div>
+      <div *ngIf="values !== undefined"><span> Verkaufspreis: {{values.sell}} {{key}} </span></div>
+    </mat-card>
+  </div>
+
 </mat-card>
 

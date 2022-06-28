@@ -1,40 +1,49 @@
 <mat-card id="dashboard">
   <mat-card-header>
-    <mat-card-title> BTC Chart</mat-card-title>
+    <mat-card-title> BTC Charts</mat-card-title>
   </mat-card-header>
-  <mat-card-content *ngIf="btcChartData | async as chartData">
-    {{chartData | json}}
-    <td-chart style="width: 1000px; height: 700px">
-      <td-chart-x-axis [show]="true"
-                       [type]="'time'">
-      </td-chart-x-axis>
-      <td-chart-y-axis [show]="true"
-                       [type]="'value'">
-      </td-chart-y-axis>
-      <td-chart-series td-line
-                       [name]="'name'"
-                       [data]="[{
-                'name': '2018-10-29T03:27:33.932Z',
-                'value': [
-                  '2018-10-29T03:27:33.932Z',
-                  200
-                ]
-              }, {
-                'name': '2018-10-30T03:27:33.932Z',
-                'value': [
-                  '2018-10-30T03:27:33.932Z',
-                  50
-                ]
-              },{
-                'name': '2018-10-31T03:27:33.932Z',
-                'value': [
-                  '2018-10-31T03:27:33.932Z',
-                  100
-                ]
-              }]"
-                       [color]="'#F2724B'">
-      </td-chart-series>
-    </td-chart>
+  <mat-card-content>
+
+    <div *ngIf="priceArray | async as price" fxFlex="50" style="margin-left: 20px">
+      <span>Market Price (USD)</span>
+      <br>
+      <span>Average USD market price across major bitcoin exchanges.</span>
+      <br>
+      <td-chart style="width: 700px; height: 500px">
+        <td-chart-x-axis [show]="true"
+                         [type]="'time'">
+        </td-chart-x-axis>
+        <td-chart-y-axis [show]="true"
+                         [type]="'value'">
+        </td-chart-y-axis>
+        <td-chart-series td-line
+                         [name]="'name'"
+                         [data]="price"
+                         [color]="'#F2724B'">
+        </td-chart-series>
+      </td-chart>
+    </div>
+
+    <div *ngIf="chartArray | async as chartData" fxFlex="50" style="margin-left: 20px">
+      <span>Transaction Rate</span>
+      <br>
+      <span>The number of Bitcoin transactions added to the mempool per second</span>
+      <br>
+      <td-chart style="width: 700px; height: 500px">
+        <td-chart-x-axis [show]="true"
+                         [type]="'time'">
+        </td-chart-x-axis>
+        <td-chart-y-axis [show]="true"
+                         [type]="'value'">
+        </td-chart-y-axis>
+        <td-chart-series td-line
+                         [name]="'name'"
+                         [data]="chartData"
+                         [color]="'#F2724B'">
+        </td-chart-series>
+      </td-chart>
+    </div>
+
   </mat-card-content>
 </mat-card>
 
