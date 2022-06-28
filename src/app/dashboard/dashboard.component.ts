@@ -41,7 +41,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.blockChainService.getBtcPrice()
-      // .pipe(map(response => this.values = response), tap(x => console.log(x)))
       .subscribe(
         data => this.btc = data,
         error => console.log(error)
@@ -68,12 +67,10 @@ export class DashboardComponent implements OnInit {
     this.btcPrice = this.blockChainService.getBtcPrice();
     this.marketcap = this.blockChainService.getMarketcap();
     this.volumeBTC = this.blockChainService.totalBTC().pipe(map(x => x / 100000000));
-
     this.difficulty = this.blockChainService.getdifficulty();
     this.latestHash = this.blockChainService.getlatesthash();
     this.transactionCount = this.blockChainService.transactioncount();
     this.csent = this.blockChainService.hrbtcsent();
-
   }
 
   filterWaehrung(waehrung: any) {

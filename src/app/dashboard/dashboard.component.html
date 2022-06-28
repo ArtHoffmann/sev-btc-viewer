@@ -74,10 +74,9 @@
 
     <div fxFlex="30">
       <div *ngIf="circulatingBTC | async as btc" fxFlex="50" style="margin-left: 20px; margin-top: 40px">
-        <span>Total Circulating Bitcoin</span>
-        <br>
-        <span>The total number of mined bitcoin that are currently circulating on the network..</span>
-        <br>
+        <div style="margin-left: 10px; margin-bottom: 10px">
+          <span>Total Circulating Bitcoin</span>
+        </div>
         <td-chart style="width: 600px; height: 400px">
           <td-chart-x-axis [show]="true"
                            [type]="'time'">
@@ -95,10 +94,10 @@
     </div>
     <div fxFlex="30">
       <div *ngIf="priceArray | async as price" fxFlex="50" style="margin-left: 80px; margin-top: 40px">
-        <span>Market Price (USD)</span>
-        <br>
-        <span>Average USD market price across major bitcoin exchanges.</span>
-        <br>
+
+        <div style="margin-left: 10px; margin-bottom: 10px">
+          <span>Market Price (USD)</span>
+        </div>
         <td-chart style="width: 600px; height: 400px">
           <td-chart-x-axis [show]="true"
                            [type]="'time'">
@@ -116,11 +115,11 @@
     </div>
   </div>
 
-  <div fxLayout="row">
+  <div fxLayout="row" style="margin-top: 20px">
     <div fxFlex="40">
       <mat-card style="margin-left: 20px; background-image: linear-gradient(to right, #DAECFA, #afafaf);">
-        <mat-card-subtitle>Price in Währung</mat-card-subtitle>
-        <mat-form-field class="drop-down" appearance="fill">
+        <mat-card-subtitle>Preis in Währung</mat-card-subtitle>
+        <mat-form-field class="drop-down" appearance="fill" style="width: 36vw">
           <mat-label>--Währungen--</mat-label>
           <mat-select name="waehrung" [(ngModel)]="values">
             <mat-option *ngFor="let b of btc | keyvalue" [value]="b.value" (click)="filterWaehrung(b.key)">
@@ -131,7 +130,7 @@
       </mat-card>
     </div>
     <mat-card fxFlex="60" style="margin-left: 20px; background-image: linear-gradient(to right, #DAECFA, #afafaf)">
-      <div style="margin-top: 20px; "*ngIf="key !== undefined"><span> Ausgewählte Währung: {{key}} </span></div>
+      <div style="margin-top: 20px; " *ngIf="key !== undefined"><span> Ausgewählte Währung: {{key}} </span></div>
       <div *ngIf="values !== undefined"><span> Einkaufspreis: {{values.buy}} {{key}}</span></div>
       <div *ngIf="values !== undefined"><span> Verkaufspreis: {{values.sell}} {{key}} </span></div>
     </mat-card>

@@ -29,8 +29,7 @@ export class BtcConverterComponent implements OnInit {
   volumeBTC: any;
 
 
-  constructor(private blockChainService: BlockchainService) {
-  }
+  constructor(private blockChainService: BlockchainService) {}
 
   ngOnInit(): void {
     this.btc = this.blockChainService.getBtcPrice();

@@ -7,8 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class BlockchainService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   public getBtcPrice(): Observable<any> {
     return this.httpClient.get<any>('https://blockchain.info/ticker');

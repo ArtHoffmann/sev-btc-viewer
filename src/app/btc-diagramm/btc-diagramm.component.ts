@@ -14,9 +14,7 @@ export class BtcDiagrammComponent implements OnInit {
   chartArray: Observable<any> | undefined;
   priceArray: Observable<any> | undefined;
 
-  constructor(private blockChainService: BlockchainService)
-  {
-  }
+  constructor(private blockChainService: BlockchainService) {}
 
   ngOnInit(): void {
     this.chartArray = this.blockChainService.getBTCChartsdata().pipe(map(x => x.values), map(koordinaten => {
