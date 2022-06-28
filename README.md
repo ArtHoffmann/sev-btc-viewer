@@ -26,3 +26,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 # sev-btc-viewer
+
+Views:
+## Dashboard
+![image](https://user-images.githubusercontent.com/24555132/176315189-c1ce154c-0925-4e6d-8661-ec34f6b8fd94.png)
+
+## Diagramm
+![image](https://user-images.githubusercontent.com/24555132/176315275-ff4b86bb-ccee-4fa4-a84d-285a33af38a8.png)
+
+## Converter
+![image](https://user-images.githubusercontent.com/24555132/176315303-39299b47-4e4a-4c53-8220-729bd2355969.png)
+
