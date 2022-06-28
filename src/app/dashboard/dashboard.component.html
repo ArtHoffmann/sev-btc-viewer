@@ -1,0 +1,35 @@
+<mat-card id="dashboard">
+  <mat-card-header>
+    <mat-card-title> BTC Preis in unterschiedlichen Währungen</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div fxLayout="row" fxLayoutAlign="space-between start" style="margin-left: 15px">
+      <ng-container *ngFor="let w of waehrungen; let i = index">
+        <div *ngIf="i <= 5"
+             style="height: 150px; width: 300px; color: rgb(39, 39, 39); border-style: solid; margin-left: 5px; margin-right: 15px"
+             fxFlex="20">
+          <span>Symbol: {{w}} <br></span>
+          <span>Einkaufspreis: {{btc[w].buy}} <br></span>
+          <span>Verkaufspreis: {{btc[w].sell}}  <br></span>
+          <span>Letzter Preis: {{btc[w].last}}</span>
+        </div>
+      </ng-container>
+    </div>
+
+    <mat-form-field class="drop-down" appearance="fill" style="margin-left: 15px; margin-top: 20px">
+      <mat-label>--Währungen--</mat-label>
+      <mat-select name="waehrung" [(ngModel)]="values">
+        <mat-option *ngFor="let b of btc | keyvalue" [value]="b.value" (click)="filterWaehrung(b.key)">
+          {{ b.key}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div style="margin-left: 15px">
+      <div *ngIf="key !== undefined"><span> Ausgewählte Währung: {{key}} </span></div>
+      <div *ngIf="values !== undefined"><span> Einkaufspreis: {{values.buy}} </span></div>
+      <div *ngIf="values !== undefined"><span> Verkaufspreis: {{values.sell}} </span></div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

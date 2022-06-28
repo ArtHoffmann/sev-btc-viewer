@@ -1,0 +1,14 @@
+#dashboard {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 141px);
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+  
+  .dash-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+  }

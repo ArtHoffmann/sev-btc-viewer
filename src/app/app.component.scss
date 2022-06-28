@@ -1,0 +1,30 @@
+.page-content {
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+  }
+  
+  
+  :host {
+    ::ng-deep .td-navigation-drawer-toolbar-content {
+      min-width: 130px !important;
+      min-height: 130px !important;
+    }
+  
+    ::ng-deep .td-navigation-drawer-toolbar-content>mat-icon {
+      min-width: 100px !important;
+      min-height: 100px !important;
+    }
+  
+    ::ng-deep .td-navigation-drawer-toolbar-content>span {
+      font-size: 20px !important;
+      ;
+    }
+  }
+  
+  .mat-toolbar.mat-primary {
+    background: #173E5E;
+    color: #fff;
+  }
+  
+ 

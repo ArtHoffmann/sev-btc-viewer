@@ -1,0 +1,49 @@
+<td-layout sidenavWidth='320px' [ngStyle]="{'height': '100vh', 'width': '100vw'}">
+  <td-navigation-drawer flex sidenavTitle="SevCoinViewer">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/home'">
+        <mat-icon>dashboard</mat-icon> <span style="margin-left: 5px">Dashboard</span>
+      </a>
+      <a mat-list-item [routerLink]="'/btc-diagramm'">
+        <mat-icon>show_chart</mat-icon> <span style="margin-left: 5px">BTC-Diagramm</span>
+      </a>
+      <a mat-list-item [routerLink]="'/btc-converter'">
+        <mat-icon><span class="iconify" data-icon="icon-park:change" data-flip="vertical"></span></mat-icon> <span
+          style="margin-left: 5px">BTC-Converter</span>
+      </a>
+      <a mat-list-item [routerLink]="'/my-coins'">
+        <mat-icon><span style="width: 25; height: 25px" class="iconify" data-icon="bi:wallet"
+            data-flip="vertical"></span></mat-icon> <span style="margin-left: 5px"> My Coins</span>
+      </a>
+      <a mat-list-item [tdLayoutToggle]="true" href="" mat-list-item>
+        <mat-icon>close</mat-icon>Schließen
+      </a>
+    </mat-nav-list>
+  </td-navigation-drawer>
+
+  <td-layout-nav toolbarTitle="SevCoinViewer" mode="side">
+    <button mat-icon-button td-menu-button [tdLayoutToggle]="true">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div td-toolbar-content style="margin-left:auto;">
+      <a mat-icon-button matTooltip="Refresh">
+        <mat-icon>refresh</mat-icon>
+      </a>
+    </div>
+
+    <div [ngStyle]="{'height': 'calc(100vh - 93px)', 'width': 'calc(100wv - 120px)'}" #pageContent>
+      <div style="height: 3px;">
+        <mat-progress-bar *ngIf="loading" color="primary" mode="indeterminate">
+        </mat-progress-bar>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+    <div style="text-align: center; background-color: lightgrey">
+      <div style="height: 25px; padding-top: 7px"> Developed by Artur Hoffmann</div>
+    </div>
+
+  </td-layout-nav>
+</td-layout>
