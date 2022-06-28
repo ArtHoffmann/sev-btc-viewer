@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Views:
 ## Dashboard
-![image](https://user-images.githubusercontent.com/24555132/176315189-c1ce154c-0925-4e6d-8661-ec34f6b8fd94.png)
+![image](https://user-images.githubusercontent.com/24555132/176316756-5d5d71de-4e00-40d0-af4d-81e1e8b1abc6.png)
 
 ## Diagramm
 ![image](https://user-images.githubusercontent.com/24555132/176315275-ff4b86bb-ccee-4fa4-a84d-285a33af38a8.png)
