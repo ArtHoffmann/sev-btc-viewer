@@ -10,7 +10,6 @@ import {CovalentLayoutModule} from '@covalent/core/layout';
 import {CovalentMarkdownModule} from '@covalent/markdown';
 import {CovalentLoadingModule} from '@covalent/core/loading';
 import {CovalentSearchModule} from '@covalent/core/search';
-import {CovalentDataTableModule} from '@covalent/core/data-table';
 import {CovalentDialogsModule} from '@covalent/core/dialogs';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {BtcConverterComponent} from './btc-converter/btc-converter.component';
@@ -18,6 +17,9 @@ import {BtcDiagrammComponent} from './btc-diagramm/btc-diagramm.component';
 import {MyCoinsComponent} from './my-coins/my-coins.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from "@angular/forms";
+import {CovalentBaseEchartsModule} from "@covalent/echarts/base";
+import {CovalentBarEchartsModule} from "@covalent/echarts/bar";
+import {CovalentTooltipEchartsModule} from "@covalent/echarts/tooltip";
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import {FormsModule} from "@angular/forms";
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CovalentBaseEchartsModule,
+    CovalentBarEchartsModule,
+    CovalentTooltipEchartsModule,
     CovalentLayoutModule,
     CovalentMarkdownModule,
     CovalentLoadingModule,
     CovalentSearchModule,
-    CovalentDataTableModule,
     CovalentDialogsModule,
     FlexLayoutModule,
     FormsModule
