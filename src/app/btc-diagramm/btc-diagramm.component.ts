@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as echarts from '@covalent/echarts';
+import {Observable} from "rxjs";
+import {BlockchainService} from "../core/blockchain.service";
 
 @Component({
   selector: 'app-btc-diagramm',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BtcDiagrammComponent implements OnInit {
 
-  constructor() { }
+  btcChartData: Observable<any> | undefined;
+
+  constructor(private blockChainService: BlockchainService) { }
 
   ngOnInit(): void {
+    this.btcChartData = this.blockChainService.getBTCChartsdata();
   }
 
 }

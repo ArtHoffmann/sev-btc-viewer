@@ -2,36 +2,38 @@
   <mat-card-header>
     <mat-card-title> BTC Chart</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <td-chart [style.height.px]="300">
-      <td-chart-tooltip [trigger]="'item'"
-                        [textStyle]="{ color: '#818181' }"
-                        [backgroundColor]="'#ffffff'">
-        <ng-template let-params let-ticket="ticket" tdTooltipFormatter>
-          <ng-container *ngIf="params">
-            <div layout="row" layout-align="start center">
-              <mat-icon>
-                <span [style.color]="params.color">people</span>
-              </mat-icon>
-              <span class="mat-caption pad-left-sm">
-            {{params.seriesName + ': ' + params.value}}
-          </span>
-            </div>
-          </ng-container>
-        </ng-template>
-      </td-chart-tooltip>
+  <mat-card-content *ngIf="btcChartData | async as chartData">
+    {{chartData | json}}
+    <td-chart style="width: 1000px; height: 700px">
       <td-chart-x-axis [show]="true"
-                       [position]="'bottom'"
-                       [type]="'category'"
-                       [data]="['Electronics', 'Toys', 'Grocery', 'Appliances', 'Automotive', 'Sports']"
-                       [boundaryGap]="true">
+                       [type]="'time'">
       </td-chart-x-axis>
       <td-chart-y-axis [show]="true"
-                       [type]="'value'"
-                       [position]="'right'"
-                       [max]="200">
+                       [type]="'value'">
       </td-chart-y-axis>
-
+      <td-chart-series td-line
+                       [name]="'name'"
+                       [data]="[{
+                'name': '2018-10-29T03:27:33.932Z',
+                'value': [
+                  '2018-10-29T03:27:33.932Z',
+                  200
+                ]
+              }, {
+                'name': '2018-10-30T03:27:33.932Z',
+                'value': [
+                  '2018-10-30T03:27:33.932Z',
+                  50
+                ]
+              },{
+                'name': '2018-10-31T03:27:33.932Z',
+                'value': [
+                  '2018-10-31T03:27:33.932Z',
+                  100
+                ]
+              }]"
+                       [color]="'#F2724B'">
+      </td-chart-series>
     </td-chart>
   </mat-card-content>
 </mat-card>

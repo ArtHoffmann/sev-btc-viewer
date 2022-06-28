@@ -1,1 +1,52 @@
-<p>btc-converter works!</p>
+<mat-card id="dashboard">
+  <mat-card-header>
+    <mat-card-title> BTC Converter</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="btc | async as b" style="margin-left: 15px; margin-top: 20px; width: 500px">
+      <h3>Aktuelle BTC-Informationen: </h3>
+      <div>
+        <span>Aktueller Preis: {{b['EUR'].buy}}€</span>
+        <span style="margin-left: 20px;">Letzter Preis: {{b['EUR'].last}}€</span>
+      </div>
+
+      <br>
+      <span>Symbol: BTC</span>
+      <br>
+      <span *ngIf="marketcap | async as m">Market Cap: {{m | numberSuffix}}</span>
+      <br>
+      <span *ngIf="volumeBTC | async as v" >Volume-BTC: {{v | numberSuffix}}</span>
+      <br>
+    </div>
+  </mat-card-content>
+
+    <mat-form-field class="drop-down" appearance="fill" style="margin-left: 15px; margin-top: 20px; width: 500px">
+      <mat-label>--Währungen--</mat-label>
+      <mat-select name="waehrung" [(ngModel)]="waehrung">
+        <mat-option *ngFor="let w of waehrungen" [value]="w" (click)="waehrungAuswaehlen(w)">
+          {{w}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" style="margin-left: 15px; margin-top: 20px; width: 500px">
+      <mat-label>Zu wechselnder Betrag</mat-label>
+      <input matInput #first type="number" [(ngModel)]='betrag'>
+      <mat-hint *ngIf="waehrung === undefined"> Es wurde keine Währung ausgewählt</mat-hint>
+    </mat-form-field>
+    <div style="margin-left: 15px; margin-top: 20px">
+      <button [disabled]="false" color="warn" mat-raised-button (click)="calcResult(betrag)">
+        Umrechnen
+      </button>
+      <button style="margin-left: 15px; margin-top: 20px" [disabled]="false" color="warn" mat-raised-button
+              (click)="reset()">
+        Reset
+      </button>
+    </div>
+    <br>
+    <div *ngIf="erg | async as result" style="margin-left: 15px; margin-top: 40px">
+      <span>Das Ergebnis der Umrechnung ist: {{result}} BTC</span>
+    </div>
+
+</mat-card>
+

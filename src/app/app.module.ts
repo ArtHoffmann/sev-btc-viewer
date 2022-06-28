@@ -20,6 +20,9 @@ import {FormsModule} from "@angular/forms";
 import {CovalentBaseEchartsModule} from "@covalent/echarts/base";
 import {CovalentBarEchartsModule} from "@covalent/echarts/bar";
 import {CovalentTooltipEchartsModule} from "@covalent/echarts/tooltip";
+import { NumberSuffixPipe } from './number-suffix.pipe';
+import {CovalentLineEchartsModule} from "@covalent/echarts/line";
+import 'echarts/lib/chart/line';
 
 @NgModule({
   declarations: [
@@ -27,10 +30,12 @@ import {CovalentTooltipEchartsModule} from "@covalent/echarts/tooltip";
     DashboardComponent,
     BtcConverterComponent,
     BtcDiagrammComponent,
-    MyCoinsComponent
+    MyCoinsComponent,
+    NumberSuffixPipe
   ],
   imports: [
     BrowserModule,
+    CovalentLineEchartsModule,
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -43,7 +48,7 @@ import {CovalentTooltipEchartsModule} from "@covalent/echarts/tooltip";
     CovalentSearchModule,
     CovalentDialogsModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
