@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 
 # Heroku Link:
-### Na, Lust zu testen? Die Anwendung ist unter folgendem Link erreichbar: https://sev-btc-viewer.herokuapp.com/
+## Na, Lust zu testen? Die Anwendung ist unter folgendem Link erreichbar: https://sev-btc-viewer.herokuapp.com/
 
 ## Development server
 
