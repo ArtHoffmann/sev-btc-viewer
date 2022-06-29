@@ -1,6 +1,6 @@
 <mat-card id="dashboard">
   <mat-card-header>
-    <mat-card-title> BTC Preis in unterschiedlichen Währungen</mat-card-title>
+    <mat-card-title>BTC price in different currencies</mat-card-title>
   </mat-card-header>
   <mat-card-content>
 
@@ -10,11 +10,11 @@
                   style="height: 150px; width: 300px; color: rgb(39, 39, 39); margin-left: 5px; margin-right: 15px"
                   fxFlex="20">
           <div fxFlex="70">
-            <span>Symbol: {{w}} <br></span>
+            <span>Currency: {{w}} <br></span>
             <br>
-            <span>Einkaufspreis: {{btc[w].buy}} {{w}}<br></span>
-            <span>Verkaufspreis: {{btc[w].sell}} {{w}}<br></span>
-            <span>Letzter Preis: {{btc[w].last}} {{w}}</span>
+            <span>Purchase price: {{btc[w].buy}} {{w}}<br></span>
+            <span>Selling price: {{btc[w].sell}} {{w}}<br></span>
+            <span>Last price Preis: {{btc[w].last}} {{w}}</span>
           </div>
 
           <div fxFlex="30">
@@ -118,9 +118,9 @@
   <div fxLayout="row" style="margin-top: 20px">
     <div fxFlex="40">
       <mat-card style="margin-left: 20px; background-image: linear-gradient(to right, #DAECFA, #afafaf);">
-        <mat-card-subtitle>Preis in Währung</mat-card-subtitle>
+        <mat-card-subtitle>Choose a currency</mat-card-subtitle>
         <mat-form-field class="drop-down" appearance="fill" style="width: 36vw">
-          <mat-label>--Währungen--</mat-label>
+          <mat-label>--Currency--</mat-label>
           <mat-select name="waehrung" [(ngModel)]="values">
             <mat-option *ngFor="let b of btc | keyvalue" [value]="b.value" (click)="filterWaehrung(b.key)">
               {{ b.key}}
@@ -130,9 +130,9 @@
       </mat-card>
     </div>
     <mat-card fxFlex="60" style="margin-left: 20px; background-image: linear-gradient(to right, #DAECFA, #afafaf)">
-      <div style="margin-top: 20px; " *ngIf="key !== undefined"><span> Ausgewählte Währung: {{key}} </span></div>
-      <div *ngIf="values !== undefined"><span> Einkaufspreis: {{values.buy}} {{key}}</span></div>
-      <div *ngIf="values !== undefined"><span> Verkaufspreis: {{values.sell}} {{key}} </span></div>
+      <div style="margin-top: 20px; " *ngIf="key !== undefined"><span> Selected currency: {{key}} </span></div>
+      <div *ngIf="values !== undefined"><span> Purchase price: {{values.buy}} {{key}}</span></div>
+      <div *ngIf="values !== undefined"><span> Selling price: {{values.sell}} {{key}} </span></div>
     </mat-card>
   </div>
 

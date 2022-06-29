@@ -34,4 +34,7 @@ export class AppComponent {
     });
   }
 
+  refresh() {
+    window.location.reload();
+  }
 }

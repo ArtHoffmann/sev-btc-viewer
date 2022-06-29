@@ -5,14 +5,14 @@
   <mat-card-content>
 
     <div fxFlex="30" *ngIf="btc | async as b" style="margin-left: 50px; margin-top: 20px; width: 550px">
-      <h3>Aktuelle BTC-Informationen: </h3>
+      <h3>Current BTC information BTC-Informationen: </h3>
       <div>
-        <span>Aktueller Preis: {{b['EUR'].buy}}€</span>
-        <span style="margin-left: 20px;">Letzter Preis: {{b['EUR'].last}}€</span>
+        <span>Current price: {{b['EUR'].buy}}€</span>
+        <span style="margin-left: 20px;">Last price: {{b['EUR'].last}}€</span>
       </div>
 
       <br>
-      <span>Symbol: BTC</span>
+      <span>Currency: BTC</span>
       <br>
       <span *ngIf="marketcap | async as m">Market Cap: {{m | numberSuffix}}</span>
       <br>
@@ -20,7 +20,7 @@
       <br>
 
       <mat-form-field class="drop-down" appearance="fill" style="margin-top: 30px; width: 550px">
-        <mat-label>--Währungen--</mat-label>
+        <mat-label>--Currency--</mat-label>
         <mat-select name="waehrung" [(ngModel)]="waehrung">
           <mat-option *ngFor="let w of waehrungen" [value]="w" (click)="waehrungAuswaehlen(w)">
             {{w}}
@@ -29,13 +29,13 @@
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill" style="margin-top: 20px; width: 550px">
-        <mat-label>Zu wechselnder Betrag</mat-label>
+        <mat-label>Amount to be changed</mat-label>
         <input matInput #first type="number" [(ngModel)]='betrag'>
-        <mat-hint *ngIf="waehrung === undefined"> Es wurde keine Währung ausgewählt</mat-hint>
+        <mat-hint *ngIf="waehrung === undefined">No currency selected</mat-hint>
       </mat-form-field>
       <div style="margin-left: 15px; margin-top: 20px">
         <button [disabled]="false" color="warn" mat-raised-button (click)="calcResult(betrag)">
-          Umrechnen
+          Convert
         </button>
         <button style="margin-left: 15px; margin-top: 20px" [disabled]="false" color="warn" mat-raised-button
                 (click)="reset()">
@@ -44,7 +44,7 @@
       </div>
       <br>
       <div *ngIf="erg | async as result" style="margin-top: 40px">
-        <h4>Das Ergebnis der Umrechnung ist: {{result}} BTC</h4>
+        <h4>The result of the conversion is: {{result}} BTC</h4>
       </div>
     </div>
 
