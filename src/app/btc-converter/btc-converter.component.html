@@ -34,7 +34,7 @@
         <mat-hint *ngIf="waehrung === undefined">No currency selected</mat-hint>
       </mat-form-field>
       <div style="margin-left: 15px; margin-top: 20px">
-        <button [disabled]="false" color="warn" mat-raised-button (click)="calcResult(betrag)">
+        <button [disabled]="false" color="warn" mat-raised-button (click)="calcBTCConvertion(betrag)">
           Convert
         </button>
         <button style="margin-left: 15px; margin-top: 20px" [disabled]="false" color="warn" mat-raised-button
@@ -43,7 +43,7 @@
         </button>
       </div>
       <br>
-      <div *ngIf="erg | async as result" style="margin-top: 40px">
+      <div *ngIf="calcResult | async as result" style="margin-top: 40px">
         <h4>The result of the conversion is: {{result}} BTC</h4>
       </div>
     </div>

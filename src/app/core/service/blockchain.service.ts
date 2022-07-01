@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
@@ -28,8 +28,7 @@ export class BlockchainService {
       .get<any>('https://api.blockchain.info/charts/total-bitcoins?timespan=15year&format=json&cors=true');
   }
 
-
-  public convertSymbolAndValueIntoBTC(symbol: string, value: number): Observable<string> {
+  public convertSymbolAndValueIntoBTC(symbol: string | undefined, value: number): Observable<string> {
     var url = 'https://blockchain.info/tobtc?currency=' + symbol + '&value=' + value;
     return this.httpClient.get<string>(url);
   }

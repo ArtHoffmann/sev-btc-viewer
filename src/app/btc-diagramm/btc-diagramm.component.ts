@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import * as echarts from '@covalent/echarts';
 import {Observable} from "rxjs";
-import {BlockchainService} from "../core/blockchain.service";
-import {map, tap} from "rxjs/operators";
+import {BlockchainService} from "../core/service/blockchain.service";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-btc-diagramm',
@@ -14,27 +13,33 @@ export class BtcDiagrammComponent implements OnInit {
   chartArray: Observable<any> | undefined;
   priceArray: Observable<any> | undefined;
 
-  constructor(private blockChainService: BlockchainService) {}
+  constructor(private blockChainService: BlockchainService) {
+  }
 
   ngOnInit(): void {
+    this.getBtcChartPriceData();
+    this.getBTCChartsData();
+  }
+
+
+  private getBTCChartsData() {
     this.chartArray = this.blockChainService.getBTCChartsdata().pipe(map(x => x.values), map(koordinaten => {
-      let items = koordinaten.map((item: any) => {
-        var a = new Date(item.x);
-        console.log(a);
-        return {'name': 'btc', value: [a, item.y]};
+      let chartItem = koordinaten.map((item: any) => {
+        var chartDate = new Date(item.x);
+        return {'name': 'btc', value: [chartDate, item.y]};
       });
-      return items;
-    })).pipe(tap(x => console.log(x)));
+      return chartItem;
+    }));
+  }
 
-
+  private getBtcChartPriceData() {
     this.priceArray = this.blockChainService.getBTCChartPriceData().pipe(map(x => x.values), map(koordinaten => {
-      let items = koordinaten.map((item: any) => {
-        var a = new Date(item.x);
-        console.log(a);
-        return {'name': 'btc', value: [a, item.y]};
+      let chartItem = koordinaten.map((item: any) => {
+        var chartDate = new Date(item.x);
+        return {'name': 'btc', value: [chartDate, item.y]};
       });
-      return items;
-    })).pipe(tap(x => console.log(x)));
+      return chartItem;
+    }));
   }
 
 }

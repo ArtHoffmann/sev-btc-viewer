@@ -6,14 +6,13 @@ import { AppComponent } from './app.component';
 import { BtcConverterComponent } from './btc-converter/btc-converter.component';
 import { BtcDiagrammComponent } from './btc-diagramm/btc-diagramm.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MyCoinsComponent } from './my-coins/my-coins.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home',
-  }, 
+  },
   {
     path: 'home',
     component: DashboardComponent,
@@ -25,10 +24,6 @@ const routes: Routes = [
   {
     path: 'btc-converter',
     component: BtcConverterComponent,
-  },
-  {
-    path: 'my-coins',
-    component: MyCoinsComponent,
   }
 ];
 

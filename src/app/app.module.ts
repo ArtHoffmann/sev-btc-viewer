@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SharedModule} from './shared.module';
+import {SharedModule} from './core/shared/shared.module';
 
 import {CovalentLayoutModule} from '@covalent/core/layout';
 import {CovalentMarkdownModule} from '@covalent/markdown';
@@ -14,13 +14,12 @@ import {CovalentDialogsModule} from '@covalent/core/dialogs';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {BtcConverterComponent} from './btc-converter/btc-converter.component';
 import {BtcDiagrammComponent} from './btc-diagramm/btc-diagramm.component';
-import {MyCoinsComponent} from './my-coins/my-coins.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from "@angular/forms";
 import {CovalentBaseEchartsModule} from "@covalent/echarts/base";
 import {CovalentBarEchartsModule} from "@covalent/echarts/bar";
 import {CovalentTooltipEchartsModule} from "@covalent/echarts/tooltip";
-import { NumberSuffixPipe } from './number-suffix.pipe';
+import { NumberSuffixPipe } from './pipe/number-suffix.pipe';
 import {CovalentLineEchartsModule} from "@covalent/echarts/line";
 import 'echarts/lib/chart/line';
 
@@ -30,7 +29,6 @@ import 'echarts/lib/chart/line';
     DashboardComponent,
     BtcConverterComponent,
     BtcDiagrammComponent,
-    MyCoinsComponent,
     NumberSuffixPipe,
   ],
   imports: [

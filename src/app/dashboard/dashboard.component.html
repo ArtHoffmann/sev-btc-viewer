@@ -1,4 +1,4 @@
-<mat-card id="dashboard">
+<mat-card id="dashboard" [ngStyle]="{'zoom' : 0.89}">
   <mat-card-header>
     <mat-card-title>BTC price in different currencies</mat-card-title>
   </mat-card-header>
@@ -135,6 +135,5 @@
       <div *ngIf="values !== undefined"><span> Selling price: {{values.sell}} {{key}} </span></div>
     </mat-card>
   </div>
-
 </mat-card>
 

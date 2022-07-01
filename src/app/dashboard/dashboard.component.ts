@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {BlockchainService} from '../core/blockchain.service';
-import {map, tap} from "rxjs/operators";
+import {BlockchainService} from '../core/service/blockchain.service';
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-dashboard',
@@ -19,14 +19,11 @@ export class DashboardComponent implements OnInit {
   priceArray: Observable<any> | undefined;
   circulatingBTC: Observable<any> | undefined;
   btcPrice: any;
-  totalBTC: any;
 
-  // details
   difficulty?: Observable<number>;
   latestHash?: Observable<string>;
   transactionCount?: Observable<number>;
   csent?: Observable<number>;
-
 
   waehrungen = [
     'USD',
@@ -47,22 +44,20 @@ export class DashboardComponent implements OnInit {
       );
 
     this.priceArray = this.blockChainService.getBTCChartPriceData().pipe(map(x => x.values), map(koordinaten => {
-      let items = koordinaten.map((item: any) => {
-        var a = new Date(item.x);
-        console.log(a);
-        return {'name': 'btc', value: [a, item.y]};
+      let chartItem = koordinaten.map((item: any) => {
+        var chartDate = new Date(item.x);
+        return {'name': 'btc', value: [chartDate, item.y]};
       });
-      return items;
-    })).pipe(tap(x => console.log(x)));
+      return chartItem;
+    }));
 
     this.circulatingBTC = this.blockChainService.getTotalCirculatingBTC().pipe(map(x => x.values), map(koordinaten => {
-      let items = koordinaten.map((item: any) => {
-        var a = new Date(item.x);
-        console.log(a);
-        return {'name': 'btc', value: [a, item.y]};
+      let chartItem = koordinaten.map((item: any) => {
+        var chartDate = new Date(item.x);
+        return {'name': 'btc', value: [chartDate, item.y]};
       });
-      return items;
-    })).pipe(tap(x => console.log(x)));
+      return chartItem;
+    }));
 
     this.btcPrice = this.blockChainService.getBtcPrice();
     this.marketcap = this.blockChainService.getMarketcap();
@@ -76,7 +71,6 @@ export class DashboardComponent implements OnInit {
   filterWaehrung(waehrung: any) {
     this.key = waehrung;
   }
-
 
 }
 
